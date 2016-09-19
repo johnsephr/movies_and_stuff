@@ -1,0 +1,304 @@
+// - - - - - - - mixins - - - - - - - //
+@mixin centerer($position:absolute) {
+    position: $position;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin v-center($position:relative) {
+    position: $position;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin h-center($position:relative) {
+    position: $position;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin bottom($position:relative) {
+    position: $position;
+    top: 100%;
+    transform: translateY(-105%);
+}
+
+@mixin inline($float:left) {
+    display: inline-block;
+    float: $float;
+    position: relative;
+}
+
+// - - - - - - - variables - - - - - - - //
+$newsletter_banner: #272625;
+$highlight: #ccac55;
+$star: #daaa35;
+$banner_text_large: #d5d4d1;
+$navigation: #616161;
+$white: #ffffff;
+$dkGrey: #333333;
+// - - - - - - - global styles - - - - - - - //
+html,
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.wrapper {
+    width: 1440px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+}
+
+// - - - - - - - body styles - - - - - - - //
+#top_header {
+    padding: 1.5em 0;
+    .logo {
+        float: left;
+        font-size: 1.85em;
+        font-weight: 700;
+        color: $highlight;
+        padding-bottom: .65em;
+        span {
+            font-weight: 300;
+            color: $navigation;
+        }
+    }
+    #main_nav {
+        float: right;
+        padding-top: 2em;
+        a {
+            color: $navigation;
+            text-decoration: none;
+            margin-left: 1em;
+        }
+        a:hover {
+            color: black ;
+        }
+    }
+}
+
+#banner {
+    background: url(../images/banner_background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    padding: 6.5em 0;
+    #banner_content_wrapper {
+        width: 900px;
+        max-width: 90%;
+        margin: 0 auto;
+        justify-content: center;
+    }
+    #poster {
+        .featured_poster {
+            width: 100%;
+            max-width: 100%;
+            border-radius: .5em;
+            box-shadow: 0px 10px 55.46px 3.54px rgba(0, 0, 0, 0.36);
+        }
+        .play_button {
+            position: fixed;
+            @include centerer;
+            .ellipse {
+                position: relative;
+                border-radius: 100px;
+                background-color: rgba(0, 0, 0, .6);
+                height: 6em;
+                width: 6em;
+                .play {
+                    position: fixed;
+                    width: 2.5em;
+                    @include centerer;
+                    transform: translate(-39%, -50%);
+                }
+            }
+        }
+    }
+    #content {
+        margin-top: 3em;
+        color: $white;
+        .title,
+        .ratings {
+            display: inline;
+        }
+        .title {
+            margin-right: .5em;
+            font-size: 4em;
+        }
+        .ratings {
+            color: $highlight;
+            font-size: 2em;
+        }
+        .dim {
+            opacity: .2;
+            font-size: .9em;
+        }
+        .description {
+            font-size: 1.25em;
+            margin-top: 1em;
+            opacity: .6;
+        }
+        .info {
+            opacity: .95;
+        }
+    }
+}
+
+.movies_header,
+.shows_header {
+    margin-bottom: 4em;
+    position: relative;
+    h2 {
+        font-size: 3em;
+        font-weight: 400;
+        margin: .75em 0;
+    }
+}
+
+.view_more {
+    @include v-center(absolute);
+    right: 0;
+    text-decoration: none;
+    opacity: .5;
+    color: black;
+    margin: 3.25em 3em 0em 1em;
+}
+
+.view_more:hover {
+    @extend .view_more;
+    opacity: .7;
+}
+
+.row {
+    width: 100%;
+    .post {
+        img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: .5em;
+            box-shadow: 0px 10px 55.46px 3.54px rgba(0, 0, 0, 0.20);
+        }
+        img:hover {
+            box-shadow: 0px 10px 55.46px 3.54px rgba(0, 0, 0, .10);
+            transform: translateY(-1px);
+            transition: .3s ease-in-out;
+        }
+        .title {
+            margin: 1em 0 0 0;
+            h3 {
+                font-size: 4em;
+            }
+        }
+        .post_info {
+            font-size: .75em;
+            margin: .5em 0 0 0;
+        }
+    }
+}
+.divider_line {
+    display: block;
+    height: 2px;
+    background-color: rgba(0,0,0,.10);
+}
+
+#top_movies,
+#top_shows,
+#clearfix {
+    margin: 6% 4%;
+}
+
+#newsletter {
+    margin-top: 5em;
+    padding: 5em 0;
+    text-align: center;
+    background: $newsletter_banner;
+    .newsletter_inner {
+        width: 600px;
+        margin: 0 auto;
+        h2 {
+            font-size: 1.75em;
+            color: $white;
+        }
+    }
+    .sign_up_form {
+        margin: 3em 0;
+        input {
+            width: 15%;
+            margin: 0 1em;
+            height: 3.25em;
+            border: none;
+            outline: none;
+            border-radius: .3em;
+            padding: .5em 1.25em;
+            font-size: .8em;
+            color: white;
+        }
+        .button {
+            background-color: $highlight;
+            width: 10%;
+            color: $white;
+            display: block;
+            @include h-center;
+            border-radius: 25px;
+            padding: .7em 3em;
+            margin-top: 2em;
+        }
+        .button:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+footer {
+    padding: 2.5em 0;
+    text-align: center;
+    .logo {
+        font-size: 1.15em;
+        font-weight: 700;
+        color: $highlight;
+        span {
+            font-weight: 300;
+            color: $navigation;
+        }
+    }
+    .copyright {
+        font-size: .75em;
+        margin: 0;
+    }
+    .links {
+        padding: 0 5em;
+        a {
+            font-size: .75em;
+            text-decoration: none;
+            margin: 0 .5em;
+            color: black;
+            &:hover {
+                color: $highlight;
+            }
+        }
+    }
+}
